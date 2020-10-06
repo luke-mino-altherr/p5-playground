@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+      "esModuleInterop": true,
+      "mapRoot": "./src/drawings",
+      "module": "none",
+      "moduleResolution": "node",
+      "noImplicitAny": true,
+      "outFile": "./build/build.js",
+      "preserveConstEnums": true,
+      "removeComments": true,
+      "rootDir": "./src/drawings",
+      "sourceMap": true,
+      "sourceRoot": "./src/drawings",
+      "target": "es5"
+    }
+  }
