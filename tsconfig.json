@@ -5,7 +5,7 @@
       "module": "none",
       "moduleResolution": "node",
       "noImplicitAny": true,
-      "outFile": "./build/build.js",
+      "outFile": "./docs/build.js",
       "preserveConstEnums": true,
       "removeComments": true,
       "rootDir": "./src/drawings",
