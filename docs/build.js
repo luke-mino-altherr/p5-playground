@@ -20,4 +20,6 @@ var s = function (p) {
         p.rect(randx + marginx, randy + marginy, rand_rect_size, rand_rect_size);
     };
 };
-var myp5 = new p5(s);
+let node = document.createElement('div');
+new p5(s, node);
+window.document.getElementsByTagName('body')[0].appendChild(node);
