@@ -1,12 +1,13 @@
-var s = function (p) {
+var idx = function (p) {
     var width = document.querySelector('body').clientWidth;
     var height = document.querySelector('body').clientHeight;
+    var min_wh = (width < height) ? width : height;
     var margin_denominator = 4;
-    var marginx = width / margin_denominator;
-    var marginy = height / margin_denominator;
-    var rand_rect_size = p.random() * 100;
-    var x = width * (margin_denominator - 2) / margin_denominator - rand_rect_size;
-    var y = height * (margin_denominator - 2) / margin_denominator - rand_rect_size;
+    var margin = 10;
+    var shape_size = 10;
+    var stroke_weight = 1;
+    var x = width * (margin_denominator - 2) / margin_denominator;
+    var y = height * (margin_denominator - 2) / margin_denominator;
     var randx = p.random() * x;
     var randy = p.random() * y;
     p.setup = function () {
@@ -14,12 +15,22 @@ var s = function (p) {
         p.background(0);
     };
     p.draw = function () {
-        p.fill(255);
-        randx = p.random() * x;
-        randy = p.random() * y;
-        p.rect(randx + marginx, randy + marginy, rand_rect_size, rand_rect_size);
+        if (shape_size < (min_wh - 2*margin)) {
+          shape_size += 10;
+          stroke_weight = p.random()*5;
+          p.stroke(255);
+          p.strokeWeight(stroke_weight);
+          p.noFill();
+          p.ellipse(x, y, shape_size);
+        }
+        else {
+            p.fill(0)
+            p.rect(margin,margin, width - margin*2, height - margin*2);
+            shape_size = 0;
+            margin += 10;
+        }
     };
 };
-let node = document.createElement('div');
-new p5(s, node);
+var node = document.createElement('div');
+new p5(idx, node);
 window.document.getElementsByTagName('body')[0].appendChild(node);
